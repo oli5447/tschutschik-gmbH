@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tschutschik GmbH</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #fff;
+      background: url('bild1.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    h1, h2, h3 { text-align: center; }
+    h1 { font-size: 3rem; margin-bottom: 10px; }
+    .intro {
+      max-width: 800px;
+      margin: 30px auto;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .angebote {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+    .angebot {
+      background: rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .angebot img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .link {
+      color: #ffd700;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    /* Birthday page */
+    #birthdayPage {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff5f6d, #ffc371);
+      color: #000;
+      padding: 40px 20px;
+    }
+    .balloons {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 20px 0;
+    }
+    .gifts {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      font-size: 4rem;
+    }
+    .gift {
+      cursor: pointer;
+      text-align: center;
+    }
+    .gift-text {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Startseite -->
+  <div id="homePage" class="overlay">
+    <h1>Tschutschik GmbH</h1>
+    <h3>Innovative Kurse. Mutige Visionen.</h3>
+
+    <div class="intro">
+      <p>
+        Mein Name ist Pablo, ich komme aus Spanien, und der Weg zur Gründung der
+        Tschutschik GmbH war alles andere als einfach. Viele haben gelacht, viele
+        haben gezweifelt – doch ich hatte eine Vision. Nach Jahren voller Rückschläge,
+        leerer Konten und schlafloser Nächte habe ich beschlossen, einen Markt zu
+        bedienen, über den sich niemand zu sprechen traut.
+      </p>
+      <p>
+        Heute stehen wir für Selbstvertrauen, Bildung und bahnbrechende Kurse.
+        Unsere Mission: Wissen vermitteln, das Leben verändert – mutig, direkt
+        und kompromisslos.
+      </p>
+    </div>
+
+    <h2>Unsere Angebote</h2>
+    <div class="angebote">
+      <div class="angebot">
+        <img src="bild2.png" alt="Deko" />
+        <h3>Kleiner Schwan? KEIN PROBLEM!</h3>
+        <div class="price">21,21 €</div>
+      </div>
+      <div class="angebot">
+        <img src="bild2.png" alt="Deko" />
+        <h3>Pocket-Ballon</h3>
+        <div class="price">2.212 €</div>
+      </div>
+      <div class="angebot">
+        <img src="bild2.png" alt="Deko" />
+        <h3>BIRTHDAY-ANGEBOT</h3>
+        <div class="price">Gratis 🎉</div>
+        <div class="link" onclick="openBirthday()">Zum Angebot</div>
+      </div>
+    </div>
+
+    <audio id="indiaMusic" autoplay loop>
+      <source src="indische_startseite.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- Birthday Seite -->
+  <div id="birthdayPage">
+    <h1>🎉 Happy Birthday 🎉</h1>
+
+    <div class="balloons">🎈 🎈 🎈 🎈 🎈</div>
+
+    <p style="text-align:center; max-width:800px; margin:0 auto; font-size:1.2rem;">
+      Da Sie heute GEBURTSTAG haben, schenken wir Ihnen im Namen der
+      Tschutschik GmbH ALLE unsere Kurse GRATIS!
+    </p>
+
+    <div class="gifts">
+      <div class="gift" onclick="giftOne(this)">
+        🎁
+        <div class="gift-text">drücken</div>
+      </div>
+      <div class="gift" onclick="giftTwo(this)">
+        🎁
+        <div class="gift-text">drücken</div>
+      </div>
+      <div class="gift" onclick="giftThree()">
+        🎁
+        <div class="gift-text link">Free Ballon Content</div>
+      </div>
+    </div>
+
+    <audio id="birthdayMusic" loop>
+      <source src="indische_musik.mp4" type="video/mp4" />
+    </audio>
+  </div>
+
+  <script>
+    function openBirthday() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('birthdayPage').style.display = 'block';
+      document.getElementById('indiaMusic').pause();
+      document.getElementById('birthdayMusic').play();
+    }
+
+    function giftOne(el) {
+      el.innerHTML = '<div style="font-size:1.2rem; font-weight:bold;">Lautstärke erhöhen 🔊</div>';
+      const bg = document.getElementById('birthdayMusic');
+      bg.pause();
+      const audio = new Audio('Design ohne Titel (1).mp4');
+      audio.play();
+    }
+
+    function giftTwo(el) {
+      const messages = [
+        'Lade Inhalte… 1 %',
+        'Lade Inhalte… 3 %',
+        'Lade Inhalte… 2 %',
+        'Bitte warten…',
+        'Optimierung läuft…',
+        'Fast fertig…',
+        'Bitte warten…'
+      ];
+      let i = 0;
+      const target = el || event.currentTarget;
+      const label = target.querySelector('.gift-text') || target;
+      if (target._loading) return;
+      target._loading = true;
+      label.textContent = messages[i];
+      target._interval = setInterval(() => {
+        i = (i + 1) % messages.length;
+        label.textContent = messages[i];
+      }, 700);
+    }
+
+    function giftThree() {
+      window.open('0204(1).mp4', '_blank');
+    }
+  </script>
+
+</body>
+</html>
